@@ -10,6 +10,8 @@ import SEO from "../components/SEO/SEO";
 import config from "../../data/SiteConfig";
 import "./b16-tomorrow-dark.css";
 import "./post.css";
+import img from "../../static/logos/logo-48.png"
+import Img from "gatsby-image"
 
 export default class PostTemplate extends React.Component {
   render() {
@@ -31,6 +33,8 @@ export default class PostTemplate extends React.Component {
           <SEO postPath={slug} postNode={postNode} postSEO />
           <div>
             <h1>{post.title}</h1>
+            <img src={img}></img>
+            <Img fixed={this.props.data.file.childImageSharp.fixed}/>
             <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
             <div className="post-meta">
               <PostTags tags={post.tags} />
@@ -68,5 +72,12 @@ export const pageQuery = graphql`
         date
       }
     }
+    file(relativePath: { eq: "logos/logo-1024.png" }) {
+      childImageSharp {
+        fixed(width: 125, height: 125) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    } 
   }
 `;

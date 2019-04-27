@@ -18,6 +18,18 @@ module.exports = {
     }
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: require("sass"),
+      },
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`
+      }
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",
     {
@@ -65,6 +77,7 @@ module.exports = {
         color: config.themeColor
       }
     },
+    "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     "gatsby-plugin-catch-links",
     "gatsby-plugin-twitter",
